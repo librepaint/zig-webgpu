@@ -36,7 +36,8 @@ Download release:
 [https://github.com/gfx-rs/wgpu-native/releases](https://github.com/gfx-rs/wgpu-native/releases)
 
 ## Run Example
-Note: You may need to changes paths in the build.json5 depending on where you "install" wgpu to.
+Note: You may need to changes paths in the build.json5 depending on where you "install" wgpu to.  
+You will also need to change the include path in `c.zig` because I haven't figured out relative paths yet.
 1) Install jvbuild ([https://github.com/vExcess/jvbuild](https://github.com/vExcess/jvbuild))
 2) Install zig dependencies `jvbuild install`
 3) Run example `jvbuild run example`
