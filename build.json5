@@ -1,0 +1,73 @@
+{
+    name: "zig-webgpu",
+    description: "Zig bindings for WebGPU",
+    author: "VExcess <github.com/vexcess>",
+    
+    modules: {
+        example: {
+            root: "./examples/triangle.zig",
+            dependencies: [
+                "vexlib",
+                "webgpu",
+                // "SDL2"
+                "glfw"
+            ]
+        },
+
+        // wgpu_native doesn't work with SDL at the moment
+        // SDL2: {
+        //     type: "system:lib",
+        //     install: {
+        //         debian_ubuntu: "sudo apt-get install libsdl2-dev",
+        //     },
+        //     dependencies: [
+        //         "libc"
+        //     ]
+        // },
+
+        glfw: {
+            type: "system:lib",
+            install: {
+                debian_ubuntu: "sudo apt-get install libglfw3-dev",
+            },
+            dependencies: [
+                "libc"
+            ]
+        },
+
+        webgpu: {
+            type: "zig:lib",
+            root: "src/webgpu.zig",
+            dependencies: [
+                "vexlib",
+                "wgpu_native"
+            ]
+        },
+
+        wgpu_native: {
+            type: "system:lib",
+            version: "27.0.4.0",
+            include: "./wgpu-linux-x86_64-debug/include/webgpu",
+            lib_path: "./wgpu-linux-x86_64-debug/lib",
+            dependencies: [
+                "libc"
+            ]
+        },
+
+        libc: {
+            type: "system:lib",
+            install: {
+                debian_ubuntu: "sudo apt install libc6-dev",
+            }
+        },
+
+        $importAll: [
+            {
+                remote: "https://github.com/vExcess/zig-vexlib",
+                local: "/home/vexcess/Sync/Workspace/zwebsuite/vexlib/build.json5"
+            }
+        ]
+    },
+
+    default: "example",
+}

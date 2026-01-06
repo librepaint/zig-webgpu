@@ -1,0 +1,6 @@
+.zig-cache
+zig-out
+jvbuild-cache
+jvbuild-out
+dawn
+wgpu-linux-x86_64-debug
