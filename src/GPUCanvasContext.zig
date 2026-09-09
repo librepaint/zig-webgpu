@@ -16,6 +16,37 @@ _surface: wgpu.WGPUSurface,
 
 const Self = @This();
 
+// fn create_wgpuSurface(instance: *wgpu.Instance, window: *sdl3.video.Window) !*wgpu.Surface {
+//     const props = try window.getProperties();
+//     const os = builtin.os.tag;
+
+//     if (os == .windows) {
+//         const win32_hwnd = props.win32_hwnd orelse return error.NoHWND;
+//         const win32_inst = props.win32_instance orelse return error.NoInstance;
+
+//         const descriptor = wgpu.surfaceDescriptorFromWindowsHWND(.{
+//             .label = "surface",
+//             .hinstance = win32_inst.value orelse return error.NoInstanceValue,
+//             .hwnd = win32_hwnd.value orelse return error.NoHWNDValue,
+//         });
+
+//         return instance.createSurface(&descriptor) orelse error.SurfaceCreationFailed;
+//     } else if (os == .linux) {
+//         const x11_display = props.x11_display orelse return error.NoDisplay;
+//         const x11_window = props.x11_window orelse return error.NoWindow;
+
+//         const descriptor = wgpu.surfaceDescriptorFromXlibWindow(.{
+//             .label = "surface",
+//             .display = x11_display.value orelse return error.NoDisplayValue,
+//             .window = @intCast(x11_window),
+//         });
+
+//         return instance.createSurface(&descriptor) orelse error.SurfaceCreationFailed;
+//     }
+
+//     return error.UnsupportedPlatform;
+// }
+
 pub fn alloc(_gpu: webgpu.gpu) Error!Self {
     // init SDL
     // try window.initSDL(window.INIT_EVERYTHING);

@@ -3,7 +3,7 @@ Zig bindings for WebGPU. Will support both Dawn and WGPU backends. Currently onl
 
 zig-webgpu will follow the WebGPU API according to MDN ([https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)) as closely as possible, however there will necessarily be differences as the WebGPU API is for JavaScript rather than Zig which are fundamentally different languages. Currently, only a small subset of the native API surface has been wrapped in Zig to conform to the web API.
 
-zig-webgpu was created primarily to act as the accelerated graphics backend for [LibrePaint 3D](https://github.com/librepaint/librepaint-3d) which is currently using CPU rasterization. The features that will get the highest priority of being implemented will be whatever I end up needing for LibrePaint and I'll continue to develop this project as needed for LibrePaint. That being said, after this initial release I won't be doing any major work on this project until late Spring since I have more urgent projects to complete. \- VExcess
+zig-webgpu was created primarily to act as the accelerated graphics backend for [LibrePaint 3D](https://github.com/microslop-mirror/librepaint-3d) which is currently using CPU rasterization. The features that will get the highest priority of being implemented will be whatever I end up needing for LibrePaint and I'll continue to develop this project as needed for LibrePaint. That being said, after this initial release I won't be doing any major work on this project until late Spring since I have more urgent projects to complete. \- VExcess
 
 ## Issues
 WGPU support for Linux is not stable yet. Some issues I've encountered are
@@ -32,12 +32,14 @@ ninja # or autoninja
 ```
 
 ## Get WGPU
-Download release:  
+Download the v29.0.1.1 release. Newer versions may or may not work due to API changes.  
 [https://github.com/gfx-rs/wgpu-native/releases](https://github.com/gfx-rs/wgpu-native/releases)
 
 ## Run Example
-Note: You may need to changes paths in the build.json5 depending on where you "install" wgpu to.  
-You will also need to change the include path in `c.zig` because I haven't figured out relative paths yet.
+zig-webgpu uses Zig 0.16.0. Older versions will not work. Newer versions may or may not work.
+
+Note: You may need to change paths in the build.json5 depending on where you "install" wgpu to.  
+You will also need to change the backend path in `config.zig` because I haven't figured out relative paths yet.
 1) Install jvbuild ([https://github.com/vExcess/jvbuild](https://github.com/vExcess/jvbuild))
 2) Install zig dependencies `jvbuild install`
 3) Run example `jvbuild run example`

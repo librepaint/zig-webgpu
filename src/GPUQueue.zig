@@ -50,9 +50,11 @@ pub fn onSubmittedWorkDone(self: *Self) *Promise(wgpu.WGPUQueueWorkDoneStatus) {
 
 fn onSubmittedWorkDoneCallback(
     status: wgpu.WGPUQueueWorkDoneStatus,
+    message: wgpu.WGPUStringView,
     userData: ?*anyopaque,
     _: ?*anyopaque
 ) callconv(.c) void {
+    _ = message; // WGPUStringView message parameter
     const promise: *Promise(wgpu.WGPUQueueWorkDoneStatus) = @ptrCast(@alignCast(userData));
     promise.resolve(status);
 }
